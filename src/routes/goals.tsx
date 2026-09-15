@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { GoalsPage } from "@/components/dayflow/pages";
+export const Route=createFileRoute("/goals")({head:()=>({meta:[{title:"Goals — DayFlow"},{name:"description",content:"Track meaningful goals, deadlines, and milestones."},{property:"og:title",content:"Goals — DayFlow"},{property:"og:description",content:"Track meaningful goals, deadlines, and milestones."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:GoalsPage});

@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { AnalyticsPage } from "@/components/dayflow/pages";
+export const Route=createFileRoute("/analytics")({head:()=>({meta:[{title:"Productivity Analytics — DayFlow"},{name:"description",content:"Explore weekly productivity, habits, and completion trends."},{property:"og:title",content:"Productivity Analytics — DayFlow"},{property:"og:description",content:"Explore weekly productivity, habits, and completion trends."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:AnalyticsPage});

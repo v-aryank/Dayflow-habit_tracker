@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { PlannerPage } from "@/components/dayflow/pages";
+export const Route=createFileRoute("/planner")({head:()=>({meta:[{title:"Weekly Planner — DayFlow"},{name:"description",content:"Plan a focused week and review each day in detail."},{property:"og:title",content:"Weekly Planner — DayFlow"},{property:"og:description",content:"Plan a focused week and review each day in detail."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:PlannerPage});
