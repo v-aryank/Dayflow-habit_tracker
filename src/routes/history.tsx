@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { HistoryPage } from "@/components/dayflow/pages";
+export const Route=createFileRoute("/history")({head:()=>({meta:[{title:"Progress History — DayFlow"},{name:"description",content:"Review historical habit, task, goal, and weekly performance."},{property:"og:title",content:"Progress History — DayFlow"},{property:"og:description",content:"Review historical habit, task, goal, and weekly performance."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:HistoryPage});

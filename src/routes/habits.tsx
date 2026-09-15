@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { HabitsPage } from "@/components/dayflow/pages";
+export const Route=createFileRoute("/habits")({head:()=>({meta:[{title:"Habit Tracker — DayFlow"},{name:"description",content:"Build positive routines and reduce unhelpful habits."},{property:"og:title",content:"Habit Tracker — DayFlow"},{property:"og:description",content:"Build positive routines and reduce unhelpful habits."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:HabitsPage});

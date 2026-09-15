@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { CalendarPage } from "@/components/dayflow/pages";
+export const Route=createFileRoute("/calendar")({head:()=>({meta:[{title:"Productivity Calendar — DayFlow"},{name:"description",content:"See daily productivity and habit completion across the month."},{property:"og:title",content:"Productivity Calendar — DayFlow"},{property:"og:description",content:"See daily productivity and habit completion across the month."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:CalendarPage});
