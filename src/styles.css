@@ -12,10 +12,6 @@
  *
  * The :root and .dark blocks define the actual color values using oklch.
  * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
  */
 
 @theme inline {
@@ -74,49 +70,49 @@
 }
 
 :root {
-  --radius: 0.65rem;
+  --radius: 0.625rem;
   --background: oklch(0.975 0.006 240);
   --foreground: oklch(0.25 0.025 252);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.25 0.025 252);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.64 0.16 243);
+  --primary: oklch(0.62 0.16 245);
   --primary-foreground: oklch(0.99 0 0);
-  --primary-soft: oklch(0.95 0.035 240);
+  --primary-soft: oklch(0.952 0.03 245);
   --secondary: oklch(0.95 0.025 160);
   --secondary-foreground: oklch(0.33 0.06 160);
-  --muted: oklch(0.95 0.008 245);
-  --muted-foreground: oklch(0.54 0.025 250);
+  --muted: oklch(0.963 0.006 245);
+  --muted-foreground: oklch(0.545 0.022 250);
   --accent: oklch(0.94 0.03 240);
   --accent-foreground: oklch(0.35 0.08 244);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.9 0.012 245);
+  --border: oklch(0.908 0.01 245);
   --input: oklch(0.9 0.012 245);
-  --ring: oklch(0.64 0.16 243);
+  --ring: oklch(0.62 0.16 245);
   --success: oklch(0.7 0.13 160);
   --success-strong: oklch(0.43 0.11 160);
   --success-foreground: oklch(0.99 0 0);
-  --success-soft: oklch(0.95 0.04 160);
+  --success-soft: oklch(0.95 0.035 160);
   --lavender: oklch(0.68 0.12 292);
   --lavender-soft: oklch(0.95 0.035 292);
   --warning: oklch(0.78 0.15 83);
   --warning-strong: oklch(0.47 0.11 70);
   --warning-soft: oklch(0.96 0.04 83);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.995 0.002 240);
+  --chart-1: oklch(0.62 0.16 245);
+  --chart-2: oklch(0.7 0.13 160);
+  --chart-3: oklch(0.78 0.15 83);
+  --chart-4: oklch(0.68 0.12 292);
+  --chart-5: oklch(0.577 0.245 27);
+  --sidebar: oklch(0.997 0.002 240);
   --sidebar-foreground: oklch(0.35 0.025 252);
-  --sidebar-primary: oklch(0.64 0.16 243);
+  --sidebar-primary: oklch(0.62 0.16 245);
   --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.95 0.03 240);
+  --sidebar-accent: oklch(0.952 0.025 245);
   --sidebar-accent-foreground: oklch(0.42 0.08 244);
-  --sidebar-border: oklch(0.91 0.012 245);
-  --sidebar-ring: oklch(0.64 0.16 243);
+  --sidebar-border: oklch(0.91 0.01 245);
+  --sidebar-ring: oklch(0.62 0.16 245);
 }
 
 .dark {
@@ -163,27 +159,71 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    font-feature-settings: "cv11";
     letter-spacing: 0;
     min-width: 320px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3 { font-family: var(--font-display); letter-spacing: 0; }
+  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; }
   button, a { -webkit-tap-highlight-color: transparent; }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 18%, transparent);
+  }
 }
 
 @utility surface-card {
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   background: var(--card);
   box-shadow: var(--shadow-card);
 }
 
+@utility surface-card-hover {
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
 :root {
-  --shadow-card: 0 1px 2px color-mix(in oklab, var(--foreground) 5%, transparent), 0 8px 24px color-mix(in oklab, var(--foreground) 4%, transparent);
-  --shadow-card-hover: 0 12px 30px color-mix(in oklab, var(--primary) 10%, transparent);
-  --shadow-nav: 0 -8px 24px color-mix(in oklab, var(--foreground) 8%, transparent);
+  --shadow-card: 0 1px 2px color-mix(in oklab, var(--foreground) 4%, transparent), 0 4px 16px color-mix(in oklab, var(--foreground) 3%, transparent);
+  --shadow-card-hover: 0 2px 4px color-mix(in oklab, var(--foreground) 5%, transparent), 0 12px 32px color-mix(in oklab, var(--primary) 8%, transparent);
+  --shadow-nav: 0 -1px 0 var(--border), 0 -6px 24px color-mix(in oklab, var(--foreground) 6%, transparent);
+  --shadow-popover: 0 1px 2px color-mix(in oklab, var(--foreground) 8%, transparent), 0 12px 36px color-mix(in oklab, var(--foreground) 10%, transparent);
+}
+
+@keyframes df-fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes df-grow-width {
+  from { width: 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .df-animate-fade-up {
+    animation: df-fade-up 0.4s ease both;
+  }
+  .df-stagger > * {
+    animation: df-fade-up 0.35s ease both;
+  }
+  .df-stagger > *:nth-child(1) { animation-delay: 0.02s; }
+  .df-stagger > *:nth-child(2) { animation-delay: 0.06s; }
+  .df-stagger > *:nth-child(3) { animation-delay: 0.1s; }
+  .df-stagger > *:nth-child(4) { animation-delay: 0.14s; }
+  .df-stagger > *:nth-child(5) { animation-delay: 0.18s; }
+  .df-stagger > *:nth-child(6) { animation-delay: 0.22s; }
+  .df-stagger > *:nth-child(7) { animation-delay: 0.26s; }
+  .df-stagger > *:nth-child(8) { animation-delay: 0.3s; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
+
+/* Thin scrollbars for horizontal-scroll matrix areas */
+.df-scroll-thin::-webkit-scrollbar { height: 6px; }
+.df-scroll-thin::-webkit-scrollbar-track { background: transparent; }
+.df-scroll-thin::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+.df-scroll-thin::-webkit-scrollbar-thumb:hover { background: var(--muted-foreground); }
